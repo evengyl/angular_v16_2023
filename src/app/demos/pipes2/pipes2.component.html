@@ -1,0 +1,77 @@
+<h3 class="center">Les Pipes</h3>
+
+
+<h5>Les Pipes Intégrés</h5>
+
+
+<div class="row">
+    <div class="col s6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <p>Titre de la promos Avant : <b>{{allDatasInObject.titlePromos}}</b></p>
+                <p>Titre de la promos Après : <b>{{allDatasInObject.titlePromos | uppercase}}</b></p>
+                <p>Titre de la promos Après : <b>{{allDatasInObject.titlePromos | lowercase}}</b></p>
+            </div>
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <p>Date de début Avant : <b>{{allDatasInObject.dateDebut}}</b></p>
+                <p>Date de début Après : <b>{{allDatasInObject.dateDebut | date : "dd-MM-yyyy"}}</b></p>
+                <p>Date de début Après : <b>{{allDatasInObject.dateDebut | date : "full"}}</b></p>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <p>Remise Net Avant : <b>{{allDatasInObject.remiseNet}}</b></p>
+                <p>Remise Net Après : <b>{{allDatasInObject.remiseNet | number : '1.3-4'}}</b></p>
+
+                <p>Remise Net Après : <b>{{allDatasInObject.remiseNet | currency : "USD"}}</b></p>
+                <p>Remise Net Après : <b>{{allDatasInObject.remiseNet | currency : "EUR"}}</b></p>
+                <p>Remise Net Après : <b>{{allDatasInObject.remiseNet | currency : "JPY"}}</b></p>
+
+                <p>TVA représente le pourcentage applicable : <b>{{allDatasInObject.tva}}</b></p>
+                <p>TVA: <b>{{allDatasInObject.tva | percent}}</b></p>
+
+                <!--output '0,134.950%'-->
+                <p>tva2: <b>{{allDatasInObject.tva2 | percent:'4.3-5'}}</b></p>
+            
+                <!--output '0 134,950 %'-->
+                <p>tva2: <b>{{allDatasInObject.tva2 | percent:'4.3-5':'fr-BE'}}</b></p>
+
+                <pre>{{textInfoi18n}}</pre>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="col s6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <pre>{{ allDatasInObject | json}}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<h5>Les Pipes custom</h5>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <p>Valeur initiale à exposantifier : {{ powerPipe }}</p>
+                <p>Valeur au carré {{powerPipe}} * {{powerPipe}} = {{ powerPipe | customPow }}</p>
+                <p>Valeur avec passage de l'exposant : {{ powerPipe | customPow : 4}}</p>
+                <p>Valeur avec passage de l'exposant + tvac : {{ powerPipe | customPow : 4 : 15.5 }}</p>
+                <p>Valeur avec passage de l'exposant + tva + texte : {{ powerPipe | customPow : 4 : 15.5 : ["TVA", "Comprise"] }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+

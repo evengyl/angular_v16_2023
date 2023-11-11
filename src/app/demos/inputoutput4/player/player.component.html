@@ -1,0 +1,15 @@
+<div class="card blue-grey darken-2">   
+    <div class="card-image">
+        <img src="https://getstream.io/blog/static/7060c303699f6248e222119a37c803a0/ca004/Angular.png">
+    </div>
+    <div class="card-content white-text">
+        <span class="card-title">#n° {{ ranked }} ----- Pseudo : {{pseudo}} </span>
+        <p>Nombre de victoire : {{win}}</p>
+        <p>Nombre de défaite : {{loose}}</p>
+        <p>PO accumulé : {{money}}</p>
+    </div>
+    <div class="card-action">
+        <button class="btn btn-small">Follow This top player</button>
+        <button class="btn btn-small" (click)="bannir(id)">Bannir ce player</button>
+    </div>
+</div>

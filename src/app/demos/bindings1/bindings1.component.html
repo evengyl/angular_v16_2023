@@ -1,0 +1,172 @@
+
+<h3 class='center'>Demos 1 : Les Différents Bindings</h3>
+
+
+
+<h5>1 : Le Binding de propriétés ts -> html</h5>
+
+<div class="row">
+
+	<div class="col s4">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<p>Ma Variable maVariable1 -> vaux {{maVariable}}</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="col s4">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<p>Ma Variable maVariable2 -> vaux {{maVariable2}}</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="col s4">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<p>Ma Variable maVariable3 -> vaux {{maVariable3}}</p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+<hr>
+
+
+<h5>2 : Le Binding two way ts -> html -> ts</h5>
+
+<div class="row">
+
+	<div class="col s4">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<p>Ma Variable maVariable1 vaux -> {{maVar1}}</p>
+				<input type="text" [(ngModel)]="maVar1" />
+			</div>
+		</div>
+	</div>
+
+	<div class="col s4">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<p>Ma Variable maVar2 vaux -> {{maVar2}}</p>
+				<input type="number" [(ngModel)]="maVar2" />
+			</div>
+		</div>
+	</div>
+
+	<div class="col s4">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<p>Ma Variable maVar3 vaux -> {{maVar3}}</p>
+				<label>
+					<input type="checkbox" [(ngModel)]="maVar3"/>
+					<span>Boolean</span>
+				</label>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<hr>
+
+
+<h5>3 : Le Binding d'évenements</h5>
+
+<div class="row">
+    <div class="col s4">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                
+                <button class="btn" (click)="addToCount()">+</button>
+                <button class="btn" (click)="remToCount()">-</button>
+                <button class="btn" (click)="resCount()">--> 0</button>
+                <p>Counter : {{ counter }}</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col s8">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+
+                <p>Mon chrono : {{ chrono }}</p>
+
+                <button class="btn green" (click)="startChrono()">start chrono</button>
+                <button class="btn orange" (click)="stopChrono()">stop chrono</button>
+                <button class="btn red" (click)="resetChrono()">reset chrono</button>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col s6">
+
+		<div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+				<ul class="list-group">
+					<li class="list-item">click = au clic de la souris</li>
+					<li class="list-item">dblclick = au double clic de la souris</li> 
+					<li class="list-item">submit = a l'envoi du formulaire</li>
+					<li class="list-item">blur = perte du focus de l'élément (form)</li>  
+					<li class="list-item">focus = au focus de l'élement</li> 
+					<li class="list-item">scroll = lors du scroll de l'élement</li>
+					<li class="list-item">cut = lors du ctrl+x</li>
+					<li class="list-item">copy = lors du ctrl+c</li>
+					<li class="list-item">paste = lors du ctrl+v</li>
+				</ul>
+            </div>
+        </div>
+
+    </div>
+
+	<div class="col s6">
+		
+		<div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+				<ul class="list-group">
+					<li class="list-item">keyup = touche du clavier up</li>
+					<li class="list-item">keypress = lors d'un appui sur une touche clavier</li>
+					<li class="list-item">keydown = touche du clavier down</li>
+					<li class="list-item">mouseup = lache le bouton de la souris (sur l'élement)</li>
+					<li class="list-item">mousedown = appuye le bouton de la souris (sur l'élement)</li>
+					<li class="list-item">mouseenter = la souris rentre dans l'élément</li>
+					<li class="list-item">drag = lors de la sélection de l'élement pour le déplacer</li>
+					<li class="list-item">drop = lors du relachement de ce même élement</li>
+					<li class="list-item">dragover = lors du déplacement de cet élement (toute les 100ms)</li>
+				</ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<hr>
+
+
+<h5>4 : Le Modèle property html -> html (reference)</h5>
+
+<div class="row">
+
+	<div class="col s12">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<span class="cart-title">#Reference</span>
+
+				<input type="text" #inputTest>
+				<button class="btn" (click)="test(inputTest.value)">click me</button>
+				{{ inputTest.value}}
+				<p>Les propriétés de modèle, dans ce cas, ne ce mettra à jour que lorsque que le input.value sera mis à jour, donc il faut un action comme un click button pour le mettre à jour, il sera vu plus tard dans ce cours
+				<br>PS : la value du input ne se mettre à jour que lors de son envoie par le click button</p>
+			</div>
+		</div>
+	</div>
+
+</div>
