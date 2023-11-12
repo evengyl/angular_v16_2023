@@ -1,0 +1,196 @@
+<h3 class="center">Demos 10 : Les formulaires réactif</h3>
+
+<h5 class="center">La version en TWB [(ngModel)]</h5><br>
+
+<div class="row">
+
+    <div class="col s12">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+
+                <div class="input-field col s6">
+                    <input type="text" placeholder="Votre nom" [(ngModel)]="name"><br><br>
+                    <label>Nom</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input type="email" placeholder="Votre Email" [(ngModel)]="email"><br><br>
+                    <label>Email</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input type="password" placeholder="Mot de passe" [(ngModel)]="password"><br><br>
+                    <label>Password</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <select [(ngModel)]="gender">
+                        <option value="male">Homme</option>
+                        <option value="female">Femme</option>
+                        <option value="other">Autre</option>
+                    </select>
+                    <label>Gender</label>
+                </div>
+
+                
+                <!-- à mettre dans le fichier index.html pour faire fonctionner les select en materializeCss
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var elems = document.querySelectorAll('select');
+                        var instances = M.FormSelect.init(elems);
+                    });
+                -->
+
+                <button class="btn green" *ngIf="name && email && password && gender" (click)="sendTWB()">
+                    Envoyer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<hr>
+
+
+
+<h5 class='center'>Les reactive forms (Form Builder)</h5>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <div class="row">
+
+                    <form class="col s12" [formGroup]="myForm">
+
+                        <div class="input-field col s6">
+                            <input formControlName="name" type="text" placeholder="Votre nom">
+                            <label>Nom</label>
+
+                            <ng-container *ngIf="myForm.controls['name'].errors && myForm.controls['name'].touched">
+
+                                <span class="helper-text" data-error="wrong" data-success="right" 
+                                    *ngIf="myForm.controls['name'].errors['required']" class="alert-danger"
+                                >
+                                    Est requis
+                                </span>
+
+                                <span class="helper-text" data-error="wrong" data-success="right" 
+                                    *ngIf="myForm.controls['name'].errors['minlength']" class="alert-danger"
+                                >
+                                    Dois être supérieur à {{myForm.controls['name'].errors['minlength'].requiredLength}} caractères
+                                    , actuellement {{myForm.controls['name'].errors['minlength'].actualLength}} caractères
+                                </span>
+
+                                <span class="helper-text" data-error="wrong" data-success="right" 
+                                    *ngIf="myForm.controls['name'].errors['maxlength']" class="alert-danger"
+                                >
+                                    Est requis
+                                </span>
+
+                            </ng-container>
+                        </div>
+
+
+                        <div class="input-field col s6">
+                            <input formControlName="email" type="email" placeholder="Votre Email">
+                            <label>Email</label>
+
+                            <ng-container *ngIf="myForm.controls['email'].errors && myForm.controls['email'].touched">
+
+                                <span class="helper-text" data-error="wrong" data-success="right" 
+                                    *ngIf="myForm.controls['email'].errors['email']" class="alert-danger"
+                                >
+                                    {{myForm.controls['email'].errors['email']}}
+                                </span>
+
+                            </ng-container>
+                        </div>
+                        
+
+                        <div class="input-field col s6">
+                            <input formControlName="password" type="password" placeholder="Mot de passe">
+                            <label>Password</label>
+                            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                        </div>
+
+
+                        <div class="input-field col s6">
+                            <input formControlName="passwordConfirm" type="password" placeholder="Confirmé votre Mot de passe">
+                            <label>Password Confirm</label>
+
+                            <ng-container *ngIf="myForm.errors && myForm.controls['password'].touched">
+
+                                <span class="helper-text" data-error="wrong" data-success="right" 
+                                    *ngIf="myForm.errors['passwordVerify']" class="alert-danger"
+                                >
+                                    {{myForm.errors['passwordVerify']}}
+                                </span>
+
+                            </ng-container>
+                        </div>
+                    
+
+                        <div class="input-field col s6">
+                            <select formControlName="gender">
+                                <option value="male">Homme</option>
+                                <option value="female">Femme</option>
+                                <option value="other">Autre</option>
+                            </select>
+                            <label>Gender</label>
+                        </div>
+
+
+                        <button class="btn green" (click)="sendRF()" *ngIf="myForm.valid">
+                            Envoyer
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="col s12">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+
+                <span class="card-title">Form Controls (abstractControl)</span>
+                <ul class="collection black-text">
+                    <li class="collection-item orange" *ngIf="myForm.pristine">Formulaire Abstract Control : (pristine)</li>
+                    <li class="collection-item orange" *ngIf="myForm.touched">Formulaire Abstract Control : (touched)</li>
+                    <li class="collection-item red" *ngIf="myForm.invalid">Formulaire Abstract Control : (invalid)</li>
+                    <li class="collection-item green" *ngIf="myForm.valid">Formulaire Abstract Control : (valid)</li>
+                </ul>
+                
+                <hr>                
+
+                <span class="card-title">Form control individual (control)</span>
+                <ul class="collection black-text">
+                    <li class="collection-item green" *ngIf='myForm.controls["name"].valid'>Champ Name : (valid)</li>
+                    <li class="collection-item red" *ngIf='myForm.controls["name"].errors'>Champ Name : (invalid)</li>
+
+                    <li class="collection-item green" *ngIf='myForm.controls["email"].valid'>Champ Email : (valid)</li>
+                    <li class="collection-item red" *ngIf='myForm.controls["email"].errors'>Champ Email : (invalid)</li>
+
+                    <li class="collection-item green" *ngIf='myForm.controls["password"].valid'>Champ Password : (valid)</li>
+                    <li class="collection-item red" *ngIf='myForm.controls["password"].errors'>Champ Password : (invalid)</li>
+
+                    <li class="collection-item green" *ngIf='myForm.controls["gender"].valid'>Champ Gender (valid)</li>
+                    <li class="collection-item red" *ngIf='myForm.controls["gender"].errors'>Champ Gender (invalid)</li>
+                </ul>
+
+                <hr>
+
+                <button class="btn green" (click)="seeMyForm()">Voir le console log du formulaire</button>
+                
+            </div>
+        </div>
+    </div>
+
+</div>

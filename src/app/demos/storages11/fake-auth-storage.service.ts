@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   // by the root application injector.
   providedIn: 'root'
 })
-export class FakeAuthService {
+export class FakeAuthStorageService {
 
 
   
