@@ -14,6 +14,11 @@ import { Guards8Component } from './demos/guards8/guards8.component';
 import { RefreshPromise9Component } from './demos/refreshPromise9/refresh-promise9.component';
 import { ReactiveForms10Component } from './demos/reactiveForms10/reactive-forms10.component';
 import { Storages11Component } from './demos/storages11/storages11.component';
+import { HttpObs12Component } from './demos/httpObservable12/httpObs12.component';
+import { ValidatorAsync13Component } from './demos/validatorCustomAsync13/validatorasync13.component';
+import { Resolvers14Component } from './demos/resolvers14/resolvers14.component';
+import { CountryResolver } from './demos/resolvers14/services/country.resolver';
+import { Signals15Component } from './demos/signals15/signals15.component';
 
 const routes: Routes = [
   { path : "", component : Bindings1Component },
@@ -33,7 +38,11 @@ const routes: Routes = [
   { path : "refreshpromise9", component : RefreshPromise9Component},
   { path : "reactiveforms10", component : ReactiveForms10Component},
   { path : "storages11", component : Storages11Component},
-
+  { path : "httpobs12", component : HttpObs12Component},
+  { path : "validatorasync13", component : ValidatorAsync13Component},
+  { path : "resolvers14", resolve : {datas : CountryResolver}, component : Resolvers14Component},
+  { path : "signals15", component : Signals15Component},
+  
 
 
 

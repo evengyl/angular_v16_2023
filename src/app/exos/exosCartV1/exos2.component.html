@@ -1,0 +1,56 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Exos 2 : le panier de courses</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col align-self-center">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Système d'ajout
+                </div>
+                <div class="card-body">
+                    <label>Article : </label>
+                    <input [(ngModel)]="newArtName" class="form-control" type="text">
+
+                    <label>Nombre : </label>
+                    <input [(ngModel)]="newArtQty" class="form-control" type="number">
+                    <hr>
+                    <button 
+                        *ngIf="newArtName != undefined && newArtQty != undefined && newArtQty <= 5 && newArtQty >= 1" 
+                        class="btn btn-success" 
+                        (click)="addToCart()"
+                    >Ajouter à la liste</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col align-self-center">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    Liste des courses
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li *ngFor="let item of maListe">
+                            {{item.qty}} x {{item.name}} ajouté le : {{item.dateAdd | date : "dd/MM/yyy HH:mm:ss"}}
+                            <button class="btn btn-danger" (click)="delToCart(item.name)">x</button>
+                            <span>Pour mamy : {{ item.qty | convertNumber}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+</div>
