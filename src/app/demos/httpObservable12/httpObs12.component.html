@@ -1,0 +1,93 @@
+
+<h3 class='center'>Demo 12 : Le HttpClient et Les observables</h3>
+
+
+
+<h5>1 : Les Observables</h5>
+
+<div class="row">
+
+	<div class="col s6">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<div class="card-header bg-success text-white">
+                    Fake service de connexion<br>
+                    State : {{isConnect}}
+                </div>
+                <div class="card-body">
+                    <button *ngIf="!isConnect" class="btn btn-success" (click)="login()">Login</button>
+                    <button *ngIf="isConnect" class="btn btn-danger" (click)="logout()">Logout</button>
+                    <button *ngIf="!isConnect" class="btn btn-primary">Create Account</button>
+                </div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col s6">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<div class="card-header bg-success text-white">
+                    Res de Subject : {{myString1}}<br>
+                    Res de Behavior Subject :  {{myString2}}
+                 </div>
+                 <div class="card-body">
+                     <button class="btn btn-success" (click)="emitSub()">Emettre les sujets</button>
+                 </div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<hr>
+
+
+<h5>1 : Le HttpClient</h5>
+
+<div class="row">
+
+	<div class="col s4">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<div *ngIf="oneCountry" class="col-3">
+                    <p>Name : {{ oneCountry.name.common }}</p>
+                    <p>Area : {{ oneCountry.area }}</p>
+                    <p>Capital : {{ oneCountry.capital[0] }}</p>
+                    <p>Continent : {{ oneCountry.continents[0] }}</p>
+                    <p>Drapeau : {{ oneCountry.flag }}</p>
+                    <p>Population : {{ oneCountry.population }}</p>
+                </div>
+			</div>
+		</div>
+	</div>
+
+	
+
+	<div class="col s6">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+                <div class="card-header bg-info text-white">
+                    Utilisations du get sur l'api restCountries
+                 </div>
+                 <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Surface</th>
+                            <th>Population</th>
+                            <th>Options</th>
+                        </tr>
+                         <tr *ngFor="let country of listCountries">
+                             <td>{{country.name.official}}</td>
+                             <td>{{country.area}}</td>
+                             <td>{{country.population }}</td>
+                             <td><button class="btn btn-info" (click)="detailsCountry(country.name.common)">Détails</button></td>
+                         </tr>
+                     </table>
+                 </div>
+			</div>
+		</div>
+	</div>
+
+</div>

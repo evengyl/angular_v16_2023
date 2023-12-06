@@ -1,0 +1,31 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Exos 1.2 - Custom pipe convert secondes</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col align-self-center">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    S -> JHMS
+                </div>
+                <div class="card-body">
+                    <input type="number" [(ngModel)]="userSec">
+                    <p>Avant : {{ userSec }} secondes</p>
+                    <p>Après : {{ userSec | converterSec }}</p>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+</div>

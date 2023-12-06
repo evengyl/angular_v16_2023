@@ -1,0 +1,32 @@
+<div class="col s12">
+    <div class="card blue-grey darken-1 hoverable">
+        <div class="card-content white-text">
+            <span class="card-title">Count: {{ count() }}</span>
+            <button (click)="initSignal()">init at 1000</button>
+            <button (click)="decrement()">-</button>
+            <button (click)="increment()">+</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="col s12">
+    <div class="card blue-grey darken-1 hoverable">
+        <div class="card-content white-text">
+            <button (click)="increasePrice()">Augmenter Price</button><br>
+            Price {{ price() }}<br>
+            Qty {{ qty() }}<br>
+            Total {{ total() }}<br>
+        </div>
+    </div>
+</div>
+
+
+<div class="col s12">
+    <div class="card blue-grey darken-1 hoverable">
+        <div class="card-content white-text">
+            <button (click)="mutateSignal()">Test mutate</button>
+            Val : {{ val().value}}
+        </div>
+    </div>
+</div>

@@ -23,6 +23,12 @@ import { Demo8guardedComponent } from './demos/guards8/demo8guarded/demo8guarded
 import { RefreshPromise9Component } from './demos/refreshPromise9/refresh-promise9.component';
 import { ReactiveForms10Component } from './demos/reactiveForms10/reactive-forms10.component';
 import { Storages11Component } from './demos/storages11/storages11.component';
+import { HttpObs12Component } from './demos/httpObservable12/httpObs12.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ValidatorAsync13Component } from './demos/validatorCustomAsync13/validatorasync13.component';
+import { Resolvers14Component } from './demos/resolvers14/resolvers14.component';
+import { Signals15Component } from './demos/signals15/signals15.component';
+import { CompoTestSignalsComponent } from './demos/signals15/compoTestSignal/compo-test-signal15.component';
 
 
 registerLocaleData(localFr)
@@ -49,13 +55,19 @@ registerLocaleData(localFr)
     Demo8guardedComponent,
     RefreshPromise9Component,
     ReactiveForms10Component,
-    Storages11Component
+    Storages11Component,
+    HttpObs12Component,
+    ValidatorAsync13Component,
+    Resolvers14Component,
+    Signals15Component,
+    CompoTestSignalsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     { provide : LOCALE_ID, useValue : "fr-BE"}
